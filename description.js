@@ -1,9 +1,13 @@
 // @flow
 // sometimes called a strings
-const STATES = Symbol('states');
-const STARTING_STATE = Symbol('starting-state');
+
+// these are called atoms
+export const STATES = Symbol('states');
+export const STARTING_STATE = Symbol('starting-state');
 
 const VendingMachine = {
+  paymentGiven: 0,
+  selectedItem: undefined,
   items: new Map([
     [('Four lokos', { stock: 0, price: 1 })],
     [("Reese's pieces", { stock: 0, price: 1 })],
