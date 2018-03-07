@@ -1,7 +1,6 @@
 // @flow
 
 const VendingMachine = {
-  power: false,
   items: new Map([
     [('Four lokos', { stock: 0, price: 1 })],
     [("Reese's pieces", { stock: 0, price: 1 })],
@@ -14,8 +13,27 @@ const VendingMachine = {
     [0.05, 'Nickel'],
   ]),
   states: {
-    poweredOff: {},
-    itemsEmpty: {},
-    changeEmpty: {},
+    acceptingMoney: {
+      addCoin: () => {},
+      returnCoins: () => {},
+    },
+    ready: {
+      selectItem: () => {},
+      dispenseItem: () => {},
+      powerOff: () => {},
+    },
+    poweredOff: {
+      powerOn: () => {},
+    },
+    itemsEmpty: {
+      powerOff: () => {},
+    },
+    changeEmpty: {
+      powerOff: () => {},
+    },
+    dispensingItem: { updateItemStock: () => {} },
+    dispensingChange: {
+      powerOff: () => {},
+    },
   },
 };
