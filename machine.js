@@ -6,14 +6,25 @@ const VendingMachine = {
     [("Reese's pieces", { stock: 0, price: 1 })],
   ]),
   change: new Map([
-    [1, 'Loonie'],
-    [2, 'Toonie'],
-    [0.25, 'Quarter'],
-    [0.1, 'Dime'],
-    [0.05, 'Nickel'],
+    ['Twoonie', { stock: 0, value: 2 }],
+    ['Loonie', { stock: 0, value: 1 }],
+    ['Quarter', { stock: 0, value: 0.25 }],
+    ['Dime', { stock: 0, value: 0.1 }],
+    ['Nickel', { stock: 0, value: 0.05 }],
   ]),
   states: {
-    acceptingMoney: {
+    maintenance: {
+      exitMaintenanceMode: () => {},
+      powerOff: () => {},
+      restockChange: () => {},
+      restockItems: () => {},
+    },
+    readyToVend: {
+      selectItem: () => {},
+      enterMaintenanceMode: () => {},
+      powerOff: () => {},
+    },
+    acceptingCoins: {
       addCoin: () => {},
       returnCoins: () => {},
     },
@@ -27,9 +38,11 @@ const VendingMachine = {
     },
     itemsEmpty: {
       powerOff: () => {},
+      restockItems: () => {},
     },
     changeEmpty: {
       powerOff: () => {},
+      restockChange: () => {},
     },
     dispensingItem: { updateItemStock: () => {} },
     dispensingChange: {
