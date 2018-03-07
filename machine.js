@@ -1,4 +1,7 @@
 // @flow
+// sometimes called a strings
+const STATES = Symbol('states');
+const STARTING_STATE = Symbol('starting-state');
 
 const VendingMachine = {
   items: new Map([
@@ -12,7 +15,8 @@ const VendingMachine = {
     ['Dime', { stock: 0, value: 0.1 }],
     ['Nickel', { stock: 0, value: 0.05 }],
   ]),
-  states: {
+  [STARTING_STATE]: 'maintenance',
+  [STATES]: {
     maintenance: {
       exitMaintenanceMode: () => {},
       powerOff: () => {},
